@@ -1,7 +1,3 @@
-#define MODE_HELLO_WORLD    (1)
-#define MODE_HELLO_KM       (2)
-#define MODE_HELLO_HATENA       (3)
-
 #define WAIT_TIME           (20) // [ms]
 
 
@@ -12,13 +8,10 @@ int count = 0;
 void setup() 
 {
 	Serial.begin(115200);
-	
-	g_display_mode = MODE_HELLO_WORLD;
 }
 
 void loop() 
 {
-
 	if(g_count > 50) {
         g_count = 0;
         count++;
@@ -40,6 +33,9 @@ void loop()
         }
     }
 
-	g_count ++;
+    if ( g_count == 100 ){
+        return;
+    }
+    g_count ++;
     delay(WAIT_TIME);
 }
